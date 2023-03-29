@@ -14,7 +14,12 @@ app.use(morgan("dev")); //dau ra ngan gon, trang thai code duoc to mau
 app.use(helmet()); //hacker tham do, xem header he thong trong curl
 //X-Powered-By -> tim lo hong express, chua va, duc vao lo hong do ->nen su dung helmet de che dau lai
 app.use(compression()); //giam bang thong 151kB -> ~0B
+
 //init db
+// require("./dbs/init.mongodb.lv0");
+require("./dbs/init.mongodb.js");
+const { checkOverload } = require("./helpers/check.connect.js");
+checkOverload();
 
 //init routers
 app.get("/", (req, res, next) => {
