@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const { default: helmet } = require("helmet");
 const morgan = require("morgan");
@@ -5,6 +6,7 @@ const morgan = require("morgan");
 const app = express();
 const compression = require("compression");
 
+// console.log(`Process::`, process.env);
 //init middlewares
 app.use(morgan("dev")); //dau ra ngan gon, trang thai code duoc to mau
 // app.use(morgan("combined")); //theo tc apache Jappan
