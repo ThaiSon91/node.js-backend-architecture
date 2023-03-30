@@ -20,17 +20,20 @@ app.use(compression()); //giam bang thong 151kB -> ~0B
 //init db
 // require("./dbs/init.mongodb.lv0");
 require("./dbs/init.mongodb.js");
-const { checkOverload } = require("./helpers/check.connect.js");
-checkOverload();
+// const { checkOverload } = require("./helpers/check.connect.js");
+// checkOverload();
 
 //init routers
-app.get("/", (req, res, next) => {
-  const strCompress = "Hello Fantipjs!";
-  return res.status(200).json({
-    message: "Welcome Fantipjs!",
-    metadata: strCompress.repeat(10000),
-  });
-});
+
+// app.get("/", (req, res, next) => {
+//   const strCompress = "Hello Fantipjs!";
+//   return res.status(200).json({
+//     message: "Welcome Fantipjs!",
+//     metadata: strCompress.repeat(10000),
+//   });
+// });
+
+app.use("/", require("./routes"));
 
 //handling error
 
