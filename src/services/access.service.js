@@ -51,8 +51,26 @@ class AccessService {
             message: "publicKeyString Error",
           };
         }
+        //created token pair
+        const tokens = await createTokenPair(
+          { userId: newShop._id, email },
+          publicKey,
+          privateKey
+        );
+        console.log(`Created Token Success::`, tokens);
+        return {
+          code: 201,
+          metadata: {
+            shop: newShop,
+            tokens,
+          },
+        };
         //const tokens = await
       }
+      return {
+        code: 200,
+        metadata: null,
+      };
     } catch (error) {
       return {
         code: "xxx",
