@@ -3,6 +3,7 @@
 const shopModel = require("../models/shop.model");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
+const KeyTokenService = require("./keyToken.service");
 
 const RoleShop = {
   SHOP: "SHOP",
@@ -39,6 +40,18 @@ class AccessService {
         });
 
         console.log({ privateKey, publicKey }); //save collection KeyStore
+        const publicKeyString = await KeyTokenService.createKeyToken({
+          userId: newShop._id,
+          publicKey,
+        });
+
+        if (!publicKeyString) {
+          return {
+            code: "xxxx",
+            message: "publicKeyString Error",
+          };
+        }
+        //const tokens = await
       }
     } catch (error) {
       return {
