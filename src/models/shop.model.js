@@ -1,7 +1,7 @@
 "use strict";
 
 //! dmbg install by mongo snippets for nodejs
-const { model, schema, Types } = require("mongoose");
+const { model, Schema, Types } = require("mongoose");
 const DOCUMENT_NAME = "Shop";
 const COLLECTION_NAME = "Shops";
 
@@ -28,7 +28,7 @@ const shopSchema = new Schema(
       default: "inactive",
     },
     vertify: {
-      type: Schema.Type.Boolean,
+      type: Schema.Types.Boolean,
       default: false,
     },
     roles: {
@@ -37,7 +37,7 @@ const shopSchema = new Schema(
     },
   },
   {
-    timestamp: true,
+    timestamps: true,
     collection: COLLECTION_NAME,
   }
 );
